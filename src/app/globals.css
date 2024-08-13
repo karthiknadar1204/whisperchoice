@@ -67,3 +67,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+.architects-daughter-regular {
+  font-family: "Architects Daughter", cursive;
+  font-weight: 400;
+  font-style: normal;
+}

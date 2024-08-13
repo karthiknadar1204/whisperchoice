@@ -1,52 +1,3 @@
-// "use client";
-
-// import React from "react";
-// import { Message, useChat } from "ai/react";
-// import Messages from "./Messages";
-
-// const ChatWrapper = ({
-//   sessionId,
-//   initialMessages,
-// }: {
-//   sessionId: string;
-//   initialMessages: Message[];
-// }) => {
-//   const { messages, handleInputChange, input, handleSubmit } = useChat({
-//     api: "/api/chat-stream",
-//     body: { sessionId },
-//     initialMessages,
-//   });
-
-//   const onSubmit = (e: React.FormEvent) => {
-//     e.preventDefault();
-//     handleSubmit();
-//   };
-
-//   return (
-//     <div className="relative min-h-full bg-zinc-900 flex divide-y divide-zinc-700 flex-col justify-between gap-2">
-//       <div className="flex-1 text-black bg-zinc-800 justify-between flex flex-col">
-//         <Messages messages={messages}/>
-//       </div>
-//       <form onSubmit={onSubmit}>
-//         <input
-//           value={input}
-//           onChange={handleInputChange}
-//           type="text"
-//           className="w-full p-2 text-white bg-zinc-700"
-//         />
-//         <button type="submit" >send</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default ChatWrapper;
-
-
-
-
-
-
 "use client";
 
 import React from "react";
@@ -73,16 +24,20 @@ const ChatWrapper = ({
   };
 
   return (
-    <div className="relative min-h-screen bg-zinc-900 flex flex-col justify-between gap-2 p-4">
-      <div className="flex-1 text-black bg-zinc-800 flex flex-col justify-between overflow-auto">
-        <Messages messages={messages} />
+    <div className="relative min-h-screen flex flex-col bg-gradient-to-r from-gray-900 via-gray-800 to-black p-6">
+      <div className="flex-1 bg-zinc-800 shadow-lg rounded-lg overflow-hidden mb-4">
+        <div className="p-4 h-full flex flex-col justify-between overflow-auto">
+          <Messages messages={messages} />
+        </div>
       </div>
-      <ChatInput
-        input={input}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-        setInput={setInput}
-      />
+      <div className="bg-gray-700 rounded-lg shadow-lg p-4">
+        <ChatInput
+          input={input}
+          handleInputChange={handleInputChange}
+          handleSubmit={onSubmit}
+          setInput={setInput}
+        />
+      </div>
     </div>
   );
 };

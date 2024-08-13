@@ -27,7 +27,6 @@ const page = async ({ params }: PageProps) => {
     ""
   );
 
-  // const sessionId = "mock-session"
   
   const isAlreadyIndexed = await redis.sismember(
     "indexed-urls",
