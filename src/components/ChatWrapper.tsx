@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Message, useChat } from "ai/react";
 import Messages from "./Messages";
 import ChatInput from "./ChatInput";
@@ -18,10 +18,15 @@ const ChatWrapper = ({
     initialMessages,
   });
 
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    handleSubmit();
-  };
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  if (!hydrated) {
+    return null;
+  }
 
   return (
     <div className="relative min-h-screen flex flex-col bg-gradient-to-r from-gray-900 via-gray-800 to-black p-6">
@@ -34,7 +39,7 @@ const ChatWrapper = ({
         <ChatInput
           input={input}
           handleInputChange={handleInputChange}
-          handleSubmit={onSubmit}
+          handleSubmit={handleSubmit}
           setInput={setInput}
         />
       </div>
